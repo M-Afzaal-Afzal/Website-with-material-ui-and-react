@@ -1,13 +1,13 @@
-import React, {useContext} from 'react';
 import {makeStyles} from "@material-ui/core/styles";
 import footerAdornment from '../../../assets/Footer Adornment.svg'
 import Grid from '@material-ui/core/Grid';
 import {Link} from 'react-router-dom';
-import {NavigationContext} from "../../../context/NavigationContext";
 import Hidden from '@material-ui/core/Hidden';
 import faceBookIcon from '../../../assets/facebook.svg';
 import instagramIcon from '../../../assets/instagram.svg';
 import twitterIcon from '../../../assets/twitter.svg';
+import {useDispatch} from "react-redux";
+import * as actions from '../../../store/actions/index.actions'
 
 const useStyles = makeStyles((theme) => ({
     footer: {
@@ -73,8 +73,10 @@ const useStyles = makeStyles((theme) => ({
 const Footer = () => {
     const classes = useStyles();
 
-    const navigationHandler = useContext(NavigationContext).navChangeHandler;
-    const popupHandler = useContext(NavigationContext).navChangeHandler;
+    const dispatch = useDispatch();
+
+    const navigationHandler = (val) => dispatch(actions.navHandler(val));
+    const popupHandler = (pIndex) => dispatch(actions.popupHandler(pIndex));
 
     const servicesPopupHandler = (val) => {
         navigationHandler(1);

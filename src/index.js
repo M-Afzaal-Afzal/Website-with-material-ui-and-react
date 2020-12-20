@@ -2,14 +2,26 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+import {createStore,combineReducers} from 'redux'
+import NavigationReducer from './store/reducers/Navigation.Reducer';
+import {Provider} from "react-redux";
 
-import NavigationContextProvider from "./context/NavigationContext";
+
+const rootReducers = combineReducers({
+    navigation : NavigationReducer,
+})
+
+const store = createStore(
+    rootReducers,
+      window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
+);
 
 ReactDOM.render(
     <React.StrictMode>
-        <NavigationContextProvider>
-            <App/>
-        </NavigationContextProvider>
+        <Provider store={store}>
+                <App/>
+        </Provider>
+
     </React.StrictMode>,
     document.getElementById('root')
 );

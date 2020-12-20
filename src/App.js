@@ -3,12 +3,18 @@ import {ThemeProvider} from "@material-ui/core/styles";
 import theme from "./components/ui/Theme";
 import Footer from "./components/ui/Footer/Footer";
 import LandingPage from "./components/LandingPage/LandingPage";
+import ServicesPage from "./components/ServicesPage/ServicesPage";
+import CustomSoftware from "./components/ServicesPage/CustomSoftware/CustomSoftware";
+import AppDevelopment from "./components/ServicesPage/appDevelopment/appDevelopment";
+import WebDevelopment from "./components/ServicesPage/WebDevelopment/WebDevelopment";
 
 import {
     BrowserRouter as Router,
     Switch,
     Route
 } from "react-router-dom";
+import RevolutionPage from "./components/RevolutionPage/RevolutionPage";
+import AboutUsPage from "./components/AboutUsPage/AboutUsPage";
 
 function App() {
     return (
@@ -18,23 +24,23 @@ function App() {
                 <Switch>
 
                     <Route path='/services'>
-                        <h1>services</h1>
+                        <ServicesPage/>
                     </Route>
 
                     <Route path='/customSoftware'>
-                        <h1>customSoftware</h1>
+                        <CustomSoftware/>
                     </Route>
 
                     <Route path='/mobileApps'>
-                        <h1>mobileApps</h1>
+                        <AppDevelopment/>
                     </Route>
 
                     <Route path='/websites'>
-                        <h1>websites</h1>
+                        <WebDevelopment/>
                     </Route>
 
                     <Route path='/about'>
-                        <h1>about</h1>
+                        <AboutUsPage/>
                     </Route>
 
                     <Route path='/contactus'>
@@ -46,7 +52,7 @@ function App() {
                     </Route>
 
                     <Route path='/revolution'>
-                        <h1>revolution</h1>
+                        <RevolutionPage/>
                     </Route>
 
                     <Route path='/'>

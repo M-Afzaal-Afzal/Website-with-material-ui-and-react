@@ -1,4 +1,4 @@
-import React, {useContext} from 'react';
+import React from 'react';
 import Grid from "@material-ui/core/Grid";
 import Typography from "@material-ui/core/Typography/Typography";
 import Button from "@material-ui/core/Button";
@@ -8,8 +8,9 @@ import {useMediaQuery} from "@material-ui/core";
 import backgroundCallToAction from '../../../assets/background.jpg';
 import backgroundMobile from '../../../assets/mobileBackground.jpg'
 import ArrowForwardOutlinedIcon from "@material-ui/icons/ArrowForwardOutlined";
-import {NavigationContext} from "../../../context/NavigationContext";
-import {Link} from 'react-router-dom'
+import {Link} from 'react-router-dom';
+import {useDispatch} from "react-redux";
+import * as actions from '../../../store/actions/index.actions'
 
 
 const useStyle = makeStyles(theme => {
@@ -39,8 +40,7 @@ const useStyle = makeStyles(theme => {
         },
         background: {
             width: '100%',
-            height: '100%',
-            background: `url(${backgroundCallToAction}) center/cover`
+            height: '60em'
         },
         arrowIcon: {
             width: '.5em',
@@ -50,7 +50,9 @@ const useStyle = makeStyles(theme => {
 
 const CallToAction = () => {
 
-    const navHandler = useContext(NavigationContext).navChangeHandler;
+    const dispatch = useDispatch();
+
+    const navHandler = (val) => dispatch(actions.navHandler(val));
 
     const theme = useTheme();
     const classes = useStyle();
@@ -62,9 +64,10 @@ const CallToAction = () => {
     }
 
     return (
-        <Grid container style={{height: '60em'}} alignItems={'center'}>
+        <Grid  style={{background: matches ? `url(${backgroundMobile}) center/cover` : `url(${backgroundCallToAction}) center/cover fixed`}}
+               className={classes.background} container alignItems={'center'}>
             <Grid direction={matchesSm ? 'column' : 'row'}
-                  style={{position: 'absolute', textAlign: matchesSm ? 'center' : 'left',}} container
+                  style={{ textAlign: matchesSm ? 'center' : 'left',}} container
                   justify={matchesSm ? "center" : 'space-between'} alignItems={'center'}>
                 <Grid item style={{marginLeft: matchesSm ? '0' : '5em'}}>
                     <Typography variant={'h2'}
@@ -88,9 +91,7 @@ const CallToAction = () => {
                     </Button>
                 </Grid>
             </Grid>
-            <div
-                style={{background: matches ? `url(${backgroundMobile}) center/cover` : `url(${backgroundCallToAction}) center/cover fixed`}}
-                className={classes.background}/>
+            <div/>
 
         </Grid>
     );

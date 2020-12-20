@@ -1,4 +1,4 @@
-import React, {useContext} from 'react';
+import React from 'react';
 import Grid from "@material-ui/core/Grid";
 import Typography from "@material-ui/core/Typography/Typography";
 import Button from "@material-ui/core/Button";
@@ -7,16 +7,11 @@ import {makeStyles} from "@material-ui/styles";
 import infoBackground from '../../../assets/infoBackground.svg';
 import {useMediaQuery} from "@material-ui/core";
 import {useTheme} from "@material-ui/styles";
-import {NavigationContext} from "../../../context/NavigationContext";
 import {Link} from "react-router-dom";
+import {useDispatch} from "react-redux";
+import * as actions from '../../../store/actions/index.actions'
 
 const useStyles = makeStyles(theme => {
-    const navHandler = useContext(NavigationContext).navChangeHandler;
-
-    const navigationHandler = (val) => {
-        navHandler(val);
-    }
-
     return {
         learnButton: {
             ...theme.typography.learntButtonHero,
@@ -45,7 +40,9 @@ const useStyles = makeStyles(theme => {
 
 const InfoBlock = () => {
 
-    const navHandler = useContext(NavigationContext).navChangeHandler;
+    const dispatch = useDispatch();
+
+    const navHandler = (val)=> dispatch(actions.navHandler(val));
 
     const classes = useStyles();
     const theme = useTheme();

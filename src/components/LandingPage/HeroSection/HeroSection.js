@@ -1,4 +1,4 @@
-import React, {useContext} from 'react';
+import React from 'react';
 import Grid from "@material-ui/core/Grid";
 import Typography from "@material-ui/core/Typography/Typography";
 import Button from "@material-ui/core/Button";
@@ -7,7 +7,8 @@ import Lottie from "react-lottie";
 import {makeStyles} from "@material-ui/styles";
 import animationData from "../../../animations/landinganimation/data";
 import {Link} from 'react-router-dom'
-import {NavigationContext} from "../../../context/NavigationContext";
+import {useDispatch} from "react-redux";
+import * as actions from '../../../store/actions/index.actions';
 
 const useStyles = makeStyles(theme => {
     return {
@@ -46,7 +47,9 @@ const useStyles = makeStyles(theme => {
 
 const HeroSection = () => {
 
-    const navHandler = useContext(NavigationContext).navChangeHandler;
+    const dispatch = useDispatch();
+
+    const navHandler = (val) => dispatch(actions.navHandler(val));
     const classes = useStyles();
 
     const navigationHandler = () => {

@@ -32,6 +32,12 @@ const theme = createMuiTheme({
             color: 'white',
 
         },
+        h1: {
+            fontFamily: 'Pacifico',
+            color: arcBlue,
+            fontSize: '2.5rem',
+            fontWeight: '700',
+        },
         h2: {
             fontFamily: 'Raleway',
             fontWeight: 700,
@@ -77,6 +83,26 @@ const theme = createMuiTheme({
             color: "white",
             fontSize: '1.25rem',
             fontFamily: 'Roboto',
+            fontWeight: 300,
+            lineHeight: 1.5,
+        },
+        body1: {
+            fontSize: '1.25rem',
+            fontWeight: 300,
+            fontFamily: 'Roboto',
+            lineHeight: 1.5,
+            color: "white",
+        },
+        body2: {
+            fontSize: '1.25rem',
+            fontWeight: 300,
+            fontFamily: 'Roboto',
+            lineHeight: 1.5,
+            color: arcGrey
+        },
+        caption: {
+            color: arcGrey,
+            fontSize: '1rem',
             fontWeight: 300,
             lineHeight: 1.5,
         }

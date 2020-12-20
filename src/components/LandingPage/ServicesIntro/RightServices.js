@@ -1,4 +1,4 @@
-import React, {Fragment, useContext} from 'react';
+import React, {Fragment} from 'react';
 import Grid from "@material-ui/core/Grid";
 import Typography from "@material-ui/core/Typography/Typography";
 import Button from "@material-ui/core/Button";
@@ -7,7 +7,9 @@ import ArrowForwardOutlinedIcon from "@material-ui/icons/ArrowForwardOutlined";
 import {useTheme} from "@material-ui/styles";
 import {useMediaQuery} from "@material-ui/core";
 import {Link} from "react-router-dom";
-import {NavigationContext} from "../../../context/NavigationContext";
+import {useDispatch} from "react-redux";
+import * as actions from '../../../store/actions/index.actions'
+
 
 const useStyles = makeStyles(theme => {
     return {
@@ -44,8 +46,10 @@ const useStyles = makeStyles(theme => {
 
 const RightServices = (props) => {
 
-    const navHandler = useContext(NavigationContext).navChangeHandler;
-    const popUpHandler = useContext(NavigationContext).popupChangeHandler;
+    const dispatch = useDispatch();
+
+    const navHandler = (val) => dispatch(actions.navHandler(val));
+    const popUpHandler = (pIndex) => dispatch(actions.popupHandler(pIndex));
 
     const theme = useTheme();
     const matchesSm = useMediaQuery(theme.breakpoints.down('sm'))
@@ -78,7 +82,7 @@ const RightServices = (props) => {
                 </Grid>
 
                 <Grid item className={classes.sideIcon}>
-                    <img src={props.image} alt="props.alt"/>
+                    <img src={props.image} alt={props.alt}/>
                 </Grid>
             </Grid>
         </Fragment>

@@ -1,4 +1,3 @@
-import React, {Fragment, useContext} from 'react';
 import Card from '@material-ui/core/Card';
 import CardContent from '@material-ui/core/CardContent';
 import Typography from "@material-ui/core/Typography/Typography";
@@ -7,8 +6,9 @@ import {makeStyles} from "@material-ui/styles";
 import Button from "@material-ui/core/Button";
 import ArrowForwardOutlinedIcon from "@material-ui/icons/ArrowForwardOutlined";
 import revolutionBackground from '../../../assets/repeatingBackground.svg';
-import {NavigationContext} from "../../../context/NavigationContext";
 import {Link} from 'react-router-dom';
+import {useDispatch} from "react-redux";
+import * as actions from '../../../store/actions/index.actions';
 
 const useStyles = makeStyles(theme => {
     return {
@@ -45,7 +45,10 @@ const useStyles = makeStyles(theme => {
 })
 
 const RevolutionCard = (props) => {
-    const navHandler = useContext(NavigationContext).navChangeHandler;
+
+    const dispatch = useDispatch();
+
+    const navHandler = (val) => dispatch(actions.navHandler(val));
 
     const classes = useStyles();
 
