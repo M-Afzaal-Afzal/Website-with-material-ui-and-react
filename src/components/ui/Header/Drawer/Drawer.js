@@ -29,7 +29,8 @@ const useStyles = makeStyles((theme) => ({
     },
     drawerItem: {
         ...theme.typography.tab,
-        color: 'white'
+        color: 'white',
+        fontSize: '1rem'
     },
     drawerItemEstimate: {
         background: theme.palette.common.orange
@@ -67,6 +68,7 @@ const Drawer = (props) => {
 
     useEffect(() => {
         navManager(currentPath,value,navigationHandler,popupHandler);
+        window.scrollTo(0, 0)
     }, [currentPath])
 
     return (

@@ -18,7 +18,7 @@ const useStyles = makeStyles((theme) => ({
     adornment: {
         width: '25rem',
         verticalAlign: 'bottom',
-        zIndex: theme.zIndex.modal + 5,
+        // zIndex: theme.zIndex.modal + 5,
         position: 'relative',
 
         [theme.breakpoints.down('md')]: {

@@ -85,6 +85,7 @@ const HeaderTabs = (props) => {
     useEffect(() => {
         // console.log(props)
         navManager(currentPath,value,navigationHandler,popupHandler);
+        window.scrollTo(0, 0)
     }, [value, currentPath]);
 
     return (

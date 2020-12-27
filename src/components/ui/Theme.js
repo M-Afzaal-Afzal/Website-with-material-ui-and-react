@@ -1,4 +1,4 @@
-import { createMuiTheme } from '@material-ui/core/styles';
+import {createMuiTheme} from '@material-ui/core/styles';
 
 const arcBlue = '#0B72B9';
 const arcOrange = '#FFBA60';
@@ -60,6 +60,12 @@ const theme = createMuiTheme({
             fontFamily: 'Raleway',
             color: arcBlue,
         },
+        h6: {
+            fontWeight: 500,
+            fontFamily: 'Raleway',
+            color: arcBlue,
+            lineHeight: 1
+        },
         subtitle1: {
             color: arcGrey,
             fontSize: '1.25rem',
@@ -87,11 +93,10 @@ const theme = createMuiTheme({
             lineHeight: 1.5,
         },
         body1: {
-            fontSize: '1.25rem',
-            fontWeight: 300,
-            fontFamily: 'Roboto',
+            fontSize: '1rem',
+            fontWeight: 700,
+            fontFamily: 'Raleway',
             lineHeight: 1.5,
-            color: "white",
         },
         body2: {
             fontSize: '1.25rem',
@@ -106,7 +111,48 @@ const theme = createMuiTheme({
             fontWeight: 300,
             lineHeight: 1.5,
         }
-    }
+    },
+    overrides: {
+        MuiDialogContent: {
+            root: {
+                '@media only screen and (max-width:350px)': {
+                    padding: '8px',
+                }
+            }
+        },
+        MuiInputLabel: {
+            root: {
+                color: arcBlue,
+                fontSize: '1rem'
+            },
+        },
+        MuiOutlinedInput: {
+            root: {
+                fontSize: '1rem',
+                '& $notchedOutline': {
+                    border: `2px solid ${arcBlue}`,
+                },
+                '&:hover:not($disabled):not($focused):not($error) $notchedOutline': {
+                    border: `2px solid ${arcBlue}`,
+                    // Reset on touch devices, it doesn't add specificity
+                    '@media (hover: none)': {
+                        border: `2px solid ${arcBlue}`,
+                    },
+                },
+                // '&$focused $notchedOutline': {
+                //     borderColor: arcBlue,
+                //     borderWidth: 2,
+                // },
+                // '&$error $notchedOutline': {
+                //     borderColor: arcBlue,
+                // },
+                // '&$disabled $notchedOutline': {
+                //     borderColor: arcBlue,
+                // },
+            },
+
+        },
+    },
 });
 
 export default theme;

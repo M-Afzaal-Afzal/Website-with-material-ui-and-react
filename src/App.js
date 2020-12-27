@@ -15,6 +15,8 @@ import {
 } from "react-router-dom";
 import RevolutionPage from "./components/RevolutionPage/RevolutionPage";
 import AboutUsPage from "./components/AboutUsPage/AboutUsPage";
+import ContactUs from "./components/ContactUsPage/ContactUs";
+import EstimatePage from "./components/EstimatePage/EstimatePage";
 
 function App() {
     return (
@@ -44,11 +46,11 @@ function App() {
                     </Route>
 
                     <Route path='/contactus'>
-                        <h1>contactus</h1>
+                        <ContactUs/>
                     </Route>
 
                     <Route path='/estimate'>
-                        <h1>estimate</h1>
+                        <EstimatePage/>
                     </Route>
 
                     <Route path='/revolution'>
